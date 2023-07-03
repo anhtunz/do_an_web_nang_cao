@@ -23,7 +23,7 @@
     MoTa = Replace(Request.Form("gioithieu"), "'", "''")
     Dim strSQL
     Set conn = Server.CreateObject("ADODB.Connection")
-    conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456"
+    conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456"
     strSQL = "UPDATE truyen SET ten_truyen=N'" & TenTruyen & "', id_the_loai='" & TheLoai & "', so_chuong='" & SoChuong & "', nam_xb='" & NamXuatBan & "', anh_truyen='" & AnhTruyen & "', tinh_trang='" & TinhTrang & "', mo_ta_ndung=N'" & MoTa & "' WHERE id_truyen='" & ID_COMIC & "'"
     conn.Execute strSQL
     conn.Close

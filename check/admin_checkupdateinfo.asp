@@ -26,7 +26,7 @@
     gioithieu = Request.Form("gioithieu")
     Dim strSQL
     Set conn = Server.CreateObject("ADODB.Connection")
-    conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456"
+    conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456"
     strSQL = "UPDATE nguoi_dung SET ho_ten=N'" & hoten & "', email='" & email & "', mat_khau='" & matkhau & "',vai_tro='" & vaitro & "', nghe_danh=N'" & nghedanh & "', ngay_sinh='" & ngaysinh & "', gioi_tinh=N'" & gioitinh & "', gioi_thieu=N'" & gioithieu & "' WHERE id_nguoi_dung='" & ID_Nguoi_dung & "'"
     conn.Execute strSQL
     conn.Close

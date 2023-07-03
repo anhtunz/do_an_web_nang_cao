@@ -43,7 +43,7 @@
         <div id= "ndungReview">
             <%
                 Dim connStr
-                connStr = "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456;"
+                connStr = "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456;"
                 Dim conn
                 Set conn = Server.CreateObject("ADODB.Connection")
                 conn.Open connStr

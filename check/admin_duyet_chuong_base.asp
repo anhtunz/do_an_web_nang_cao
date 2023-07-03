@@ -15,7 +15,7 @@
     End If
     Dim strSQL
     Set conn = Server.CreateObject("ADODB.Connection")
-    conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456"
+    conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456"
     strSQL = "UPDATE chuong SET duyet = 1 WHERE id_chuong = " & id_chuong
     conn.Execute strSQL
     conn.Close

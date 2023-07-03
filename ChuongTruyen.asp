@@ -76,7 +76,7 @@
         id_chuong=Request.QueryString("id_chuong") 
         Dim conn 
         Set conn=Server.CreateObject("ADODB.Connection")
-        conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456;"
+        conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456;"
     %>
     <% 
         Dim id_truyen
@@ -108,7 +108,7 @@
                     strSQLTitle = "SELECT t.ten_truyen, c.ten_chuong, t.id_truyen FROM truyen AS t INNER JOIN chuong AS c ON t.id_truyen = c.id_truyen WHERE t.id_truyen = " & id_truyen & " AND c.id_chuong = " & id_chuong
                     
                     Set conn = Server.CreateObject("ADODB.Connection")
-                    conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456;"
+                    conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456;"
                     
                     Set rs = conn.Execute(strSQLTitle)
             
@@ -140,16 +140,17 @@
                         "INNER JOIN chuong AS c ON t.id_truyen = c.id_truyen " & _
                         "WHERE t.id_truyen = " & id_truyen & " AND c.id_chuong = " & id_chuong
                     Set conn = Server.CreateObject("ADODB.Connection")
-                    conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456;"
+                    conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456;"
                     Set rs = conn.Execute(strSQLeee)
                     If Not rs.EOF Then
                         Dim chuong_thoi_gian
                         ten_truyen = rs("ten_truyen")
                         ten_chuong = rs("ten_chuong")
                         chuong_thoi_gian = rs("chuong_thoi_gian")
+                        chuongthoigian = FormatDateTime(chuong_thoi_gian, vbShortDate)
                         Response.Write "<h2>" & ten_truyen & "</h2>"
                         Response.Write "<div class='chapter'>" & ten_chuong & "</div>"
-                        Response.Write "<div class='time'>" & chuong_thoi_gian & "</div>"
+                        Response.Write "<h6 class='time'> Ngày đăng: " & chuongthoigian & "</h6>"
                     End If
                     rs.Close
                     conn.Close
@@ -163,29 +164,25 @@
                 Dim strSQLPrev
                 strSQLPrev = "SELECT TOP 1 * FROM chuong WHERE id_truyen = " & id_truyen & " AND id_chuong< " & id_chuong & " ORDER BY id_chuong DESC" 
                 Set conn=Server.CreateObject("ADODB.Connection")
-                conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456;"
+                conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456;"
                 Set rs=conn.Execute(strSQLPrev) 
                 If Not rs.EOF Then 
             %>
-                <button class="buttons">   <a href="ChuongTruyen.asp?id_chuong=<%= rs("id_chuong") %>&id_truyen=<%= id_truyen %>"> <b>< Trước </b> </a>  </button>
+                <a style="color:" type="button" class="btn btn-success" href="ChuongTruyen.asp?id_chuong=<%= rs("id_chuong") %>&id_truyen=<%= id_truyen %>"> <b>< Trước </b> </a>
             <%
                 End If
                 End If
             %>   
-            <button>
-                <a href="TrangTruyen.asp?id_truyen=<%= id_truyen %>"><b> Mục lục </b></a>
-            </button>
+                <a style="color:" type="button" class="btn btn-success" href="TrangTruyen.asp?id_truyen=<%= id_truyen %>"><b> Mục lục </b></a>
             <%
                 If id_truyen <> "" Then
                     strSQLNext="SELECT TOP 1 * FROM chuong WHERE id_truyen = " & id_truyen & " AND id_chuong > " &id_chuong & " ORDER BY id_chuong ASC" 
                     Set conn=Server.CreateObject("ADODB.Connection")
-                    conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456;"
+                    conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456;"
                     Set rs=conn.Execute(strSQLNext) 
                     If Not rs.EOF Then 
             %>
-            <button class="buttons">
-                <a href="ChuongTruyen.asp?id_chuong=<%= rs("id_chuong") %>&id_truyen=<%= id_truyen %>"> <b> Sau ></b> </a>    
-            </button>
+                <a style="color:" type="button" class="btn btn-success" href="ChuongTruyen.asp?id_chuong=<%= rs("id_chuong") %>&id_truyen=<%= id_truyen %>"> <b> Sau ></b> </a>    
             <%
                 End If
                 End If
@@ -214,31 +211,25 @@
                 If id_truyen <> "" Then
                     strSQLPrevi="SELECT TOP 1 * FROM chuong WHERE id_truyen = " & id_truyen & " AND id_chuong < " &id_chuong & " ORDER BY id_chuong DESC" 
                     Set conn=Server.CreateObject("ADODB.Connection")
-                    conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456;"
+                    conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456;"
                     Set rs=conn.Execute(strSQLPrevi) 
                     If Not rs.EOF Then 
             %>
-                <button>   
-                    <a href="ChuongTruyen.asp?id_chuong=<%= rs("id_chuong") %>&id_truyen=<%= id_truyen %>"><b> Chương Trước </b></a>  
-                </button>
+                    <a style="color:" type="button" class="btn btn-success" href="ChuongTruyen.asp?id_chuong=<%= rs("id_chuong") %>&id_truyen=<%= id_truyen %>"><b>< Trước </b></a>  
             <%
                     End If
                 End If
             %>
-                <button>
-                    <a href="TrangTruyen.asp?id_truyen=<%= id_truyen %>"><b> Mục lục </b></a>
-                </button>
+                    <a style="color:" type="button" class="btn btn-success" href="TrangTruyen.asp?id_truyen=<%= id_truyen %>"><b> Mục lục </b></a>
             <%
                 If id_truyen <> "" Then
                     strSQLNextChapter="SELECT TOP 1 * FROM chuong WHERE id_truyen = " & id_truyen& " AND id_chuong > " & id_chuong & " ORDER BY id_chuong ASC" 
                     Set conn=Server.CreateObject("ADODB.Connection")
-                    conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456;"
+                    conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456;"
                     Set rs=conn.Execute(strSQLNextChapter) 
                     If Not rs.EOF Then
             %>
-            <button>
-                <a href="ChuongTruyen.asp?id_chuong=<%= rs("id_chuong") %>&id_truyen=<%= id_truyen %>"><b> Chương Sau </b> </a>    
-            </button>
+                <a style="color:" type="button" class="btn btn-success"  href="ChuongTruyen.asp?id_chuong=<%= rs("id_chuong") %>&id_truyen=<%= id_truyen %>"><b> Sau ></b> </a>    
     
             <%
                     End If

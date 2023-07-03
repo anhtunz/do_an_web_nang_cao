@@ -36,7 +36,7 @@
     id_chuong = Request.Cookies("id_chuong")
     If id_chuong <> "" Then
         Set conn = Server.CreateObject("ADODB.Connection")
-        conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456"
+        conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456"
         sql = "SELECT chuong.ten_chuong, truyen.ten_truyen,truyen.id_truyen FROM chuong JOIN truyen ON chuong.id_truyen = truyen.id_truyen WHERE chuong.id_chuong = " & id_chuong
         Set rs = conn.Execute(sql)
   %>

@@ -10,7 +10,7 @@
     noidungchuong = Request.Form("noidungchuong")
     Dim strSQL
     Set conn = Server.CreateObject("ADODB.Connection")
-    conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456"
+    conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456"
     strSQL = "INSERT INTO chuong (ten_chuong, ndung_chuong, id_truyen,duyet) VALUES (N'" & ten_chuong & "',N'" & noidungchuong & "', '" & idtruyen & "',0 )"
     conn.Execute strSQL
     conn.Close

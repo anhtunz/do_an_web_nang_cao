@@ -4,7 +4,7 @@
     Response.CodePage = 65001
     Response.CharSet = "UTF-8"
     Set conn = Server.CreateObject("ADODB.Connection")
-    conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456;"
+    conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456;"
     If Request.Form("commentId") <> "" And Request.Form("commentText") <> "" Then
         Dim commentId, commentText
         commentId = Request.Form("commentId")

@@ -103,7 +103,7 @@
           id_truyen = Request.QueryString("id_truyen")
           Dim conn
           Set conn = Server.CreateObject("ADODB.Connection")
-          conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456;"
+          conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456;"
           Dim sql
           sql = "SELECT * FROM truyen WHERE id_truyen = '" & id_truyen & "'"
           Dim rs
@@ -130,14 +130,17 @@
 
                 If id_truyen <> "" Then
                     Set conn = Server.CreateObject("ADODB.Connection")
-                    conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456;"
-                    sql = "SELECT truyen.*, nguoi_dung.ho_ten, the_loai.ten_the_loai " & _
+                    conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456;"
+                    sql = "SELECT truyen.*, nguoi_dung.ho_ten, the_loai.ten_the_loai, chuong.id_chuong " & _
                           "FROM truyen " & _
                           "INNER JOIN nguoi_dung ON truyen.id_nguoi_dung = nguoi_dung.id_nguoi_dung " & _
                           "INNER JOIN the_loai ON truyen.id_the_loai = the_loai.id_the_loai " & _
+                          "INNER JOIN chuong ON truyen.id_truyen = chuong.id_truyen " & _
                           "WHERE truyen.id_truyen = " & id_truyen
+
                     Set rs = conn.Execute(sql)
                     If Not rs.EOF Then
+                        idchuong=rs("id_chuong")
                         anh_truyen = rs("anh_truyen")
                         ten_truyen= rs("ten_truyen")
                         mo_ta_ndung= rs("mo_ta_ndung")
@@ -187,7 +190,7 @@
                 <div class="mota">
                   <a class="danhsachchuong" href="#chapters">
                     <button type="button" class="btn btn-primary">Danh sách chương</button></a>
-                  <a id="doctruyen" href="ChuongTruyen.asp?id_truyen=<%= id_truyen %>&id_chuong=1">
+                  <a id="doctruyen" href="ChuongTruyen.asp?id_truyen=<%= id_truyen %>&id_chuong=<%= idchuong %>">
                     <button type="button" class="btn btn-danger">Đọc truyện</button></a>
                   <hr>
                 </div>
@@ -203,7 +206,7 @@
             </header>
             <%
               Set conn = Server.CreateObject("ADODB.Connection")
-              conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456;"
+              conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456;"
               sql = "SELECT TOP 3 * FROM chuong WHERE chuong.id_truyen = " & id_truyen & " ORDER BY id_chuong DESC"
               Set rs = conn.Execute(sql)
               Do While Not rs.EOF
@@ -229,7 +232,7 @@
                 Dim pageSize
                 pageSize = 5
                 Set conn = Server.CreateObject("ADODB.Connection")
-                conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456;"
+                conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456;"
                 sqlCount = "SELECT COUNT(*) AS TotalChapters FROM chuong WHERE chuong.id_truyen = " & id_truyen
                 Set rsCount = conn.Execute(sqlCount)
                 totalChapters = rsCount("TotalChapters")
@@ -246,7 +249,7 @@
                 Do While Not rs.EOF
                 %>
                 <li class="Chapters">
-                  <a href="ChuongTruyen.asp?id_truyen=<%= id_truyen %>&id_chuong=<%= rs("id_chuong")%>"  title="<%= rs("ten_chuong") %>"><%= rs("ten_chuong") %></a>              </li>
+                  <a href="ChuongTruyen.asp?id_truyen=<%= id_truyen %>&id_chuong=<%= rs("id_chuong")%>"  title="<%= rs("ten_chuong") %>"><%= rs("ten_chuong") %></a> 
                 </li>
                 <%
                   rs.MoveNext
@@ -280,7 +283,7 @@
         ">THỂ LOẠI TRUYỆN</header>            
               <%
                 Set conn = Server.CreateObject("ADODB.Connection")
-                conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456;"
+                conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456;"
                 sql = "SELECT *  FROM the_loai "
                 Set rs = conn.Execute(sql)
                 Dim dem
@@ -318,7 +321,7 @@
               <ul class="list-group">
                   <% 
                   Dim connStr
-                  connStr = "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456;"
+                  connStr = "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456;"
 
                   Set conn = Server.CreateObject("ADODB.Connection")
                   conn.Open connStr

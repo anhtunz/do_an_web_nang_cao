@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web đọc truyện</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 
     
@@ -58,7 +58,7 @@
     isLoggedIn = True
     
     Set conn = Server.CreateObject("ADODB.Connection")
-    conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456;"
+    conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456;"
 
     sql = "SELECT * FROM nguoi_dung WHERE email = '" & email & "'"
 
@@ -87,7 +87,7 @@
         <input type="" name="id_chuong" placeholder="" value="<%= id_chuong %>"><br>
       </div>
       <textarea name="comment" placeholder="Nhập bình luận của bạn"></textarea><br>
-      <button type="submit">Gửi</button>
+      <button type="submit" class="btn btn-info">Gửi</button>
     </form>
   <%
   Else
@@ -129,7 +129,7 @@
   <div id="comment-list">
     <%
     Set conn = Server.CreateObject("ADODB.Connection")
-    conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456;"
+    conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456;"
     Set rs = conn.Execute("SELECT binh_luan.*, nguoi_dung.* " & _
                           "FROM binh_luan INNER JOIN nguoi_dung ON binh_luan.id_nguoi_dung = nguoi_dung.id_nguoi_dung " & _
                           "WHERE binh_luan.id_truyen = " & id_truyen & _
@@ -139,25 +139,23 @@
         <div>
             <div class="acts ml-auto d-flex justify-content-between" style="display: flex">
                 
-                <small style="display:flex;">
-                  <img src="/Anh/meme camdao.jpg" alt="" width="32" height="32" class="rounded-circle me-2" style="margin-top: 7px;">                    <div>
+                <small >
                       <div class="userinfo">
+                          <img src="/Anh/meme camdao.jpg" alt="" width="32" height="32" class="rounded-circle me-2" style="margin-top: 7px;">
                           <strong style="font-size: 16px; color: blue"><%= rs("nghe_danh") %></strong>
                           <i class="fa fa-circle"></i> <%= rs("ngay_binh_luan") %>
                       </div>
-                      <% If isLoggedIn And rs("id_nguoi_dung") = id_nguoi_bl Then %>
+                        <% If isLoggedIn And rs("id_nguoi_dung") = id_nguoi_bl Then %>
                       <div class="comment-actions">
-                          <p id="comment-text-<%= rs("id_binh_luan") %>" style="font-size: 16px; color: black" rows="2"><%= rs("ndung_binh_luan") %></p>
+                          <p id="comment-text-<%= rs("id_binh_luan") %>" style="margin-left: 40px; font-size: 16px;" rows="2"><%= rs("ndung_binh_luan") %></p>
                           <div id="edit-buttons-<%= rs("id_binh_luan") %>" style="display: none;">
                               <input type="text" id="edit-comment-<%= rs("id_binh_luan") %>" style="width: 100%;" value="<%= rs("ndung_binh_luan") %>">
                               <button onclick="cancelEditComment(<%= rs("id_binh_luan") %>)"><i class="bi bi-x-circle-fill"> </i>Hủy</button>
                               <button onclick="saveComment(<%= rs("id_binh_luan") %>)"><i class="bi bi-file-earmark-check-fill"> </i>Lưu</button>
                           </div>
                       </div>
-                    </div>
-
                     <% Else %>
-                    <p style="font-size: 16px; color: black"><%= rs("ndung_binh_luan") %></p>
+                    <p style="margin-left: 40px;font-size: 16px; "><%= rs("ndung_binh_luan") %></p>
                     <% End If %>
                 </small>
                 <div class="dropdown-center">

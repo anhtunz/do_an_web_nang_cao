@@ -2,7 +2,7 @@
     id_nguoi_dung = Request.QueryString("id_nguoi_dung")
     Dim strSQL
     Set conn = Server.CreateObject("ADODB.Connection")
-    conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456"
+    conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456"
     strSQL = "DELETE FROM nguoi_dung WHERE id_nguoi_dung = "&id_nguoi_dung
      conn.Execute strSQL
     conn.Close

@@ -51,7 +51,7 @@
           Dim id_the_loai
           id_the_loai = Request.QueryString("id_the_loai")
           Set conn = Server.CreateObject("ADODB.Connection")
-          conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456"
+          conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456"
           Set rs = conn.Execute ("SELECT truyen.id_truyen,truyen.ten_truyen, nguoi_dung.nghe_danh, truyen.so_chuong, the_loai.ten_the_loai FROM truyen JOIN nguoi_dung ON truyen.id_nguoi_dung = nguoi_dung.id_nguoi_dung JOIN the_loai ON truyen.id_the_loai = the_loai.id_the_loai WHERE the_loai.id_the_loai ="  & id_the_loai &"and duyet=1")
         %>
         <h4 class = "center">Danh sách truyện theo thể loại <%=rs("ten_the_loai") %> </h4>
@@ -86,7 +86,7 @@
         </div>
         <%
           Set conn = Server.CreateObject("ADODB.Connection")
-          conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456"
+          conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456"
           sql = "SELECT *  FROM the_loai "
           Set rs = conn.Execute(sql)
           Dim dem

@@ -34,21 +34,21 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="index.asp">Trang chủ</a>
+                            <a class="nav-link active" aria-current="page" href="index.asp" style="color: black">Trang chủ</a>
                         </li>
                         
                         <li class="nav-item">
-                            <a class="nav-link" href="danh_sach_truyen.asp">Danh sách truyện</a>
+                            <a class="nav-link" href="danh_sach_truyen.asp" style="color: black" >Danh sách truyện</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Thể loại
+                                data-bs-toggle="dropdown" aria-expanded="false" style="color: black">
+                                <i class="bi bi-tags"></i>Thể loại
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <%
                                     Set conn = Server.CreateObject("ADODB.Connection")
-                                    conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456"
+                                    conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456"
                                     sql = "SELECT *  FROM the_loai "
                                     Set rs = conn.Execute(sql)
                                     Do While Not rs.EOF
@@ -73,7 +73,7 @@
                     </ul>
                     <form class="d-flex m20" method="get" action="/find.asp">
                         <input class="form-control me-2" type="search" placeholder="Tìm truyện, tác giả..." aria-label="Search" name ="searchInput">
-                        <button class="btn btn-outline-success" type="submit">Tìm</button>
+                        <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
                     </form>
                     <% 
                     searchInput = Request.QueryString("searchInput")
@@ -82,11 +82,14 @@
                 <%
                 If (NOT isnull(Session("email"))) AND (TRIM(Session("email"))<>"") Then
                 Set conn = Server.CreateObject("ADODB.Connection")
-                conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456"
+                conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456"
                 sql = "SELECT * FROM nguoi_dung WHERE email='" & email & "'"
                 Set rs = conn.Execute(sql)
                 %>
-                <span class="navbar-text">Xin chào <%= rs("nghe_danh")%>!</span>
+                    <span class="navbar-text"> Xin chào                
+                        <a href="/Quanlythongtin/info.asp?id_nguoi_dung=<%= rs("id_nguoi_dung") %>" style="color: black; text-decoration: none;"><b><%= rs("nghe_danh") %></b></a>
+                    </span>
+                
                 <a type="button"  href="logout.asp" class="btn btn-danger ms-3">Đăng xuất</a>
                 <%                        
                 Else

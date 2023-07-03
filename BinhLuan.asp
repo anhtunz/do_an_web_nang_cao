@@ -14,7 +14,7 @@
         If ndung_binh_luan <> "" Then
             Dim conn
             Set conn = Server.CreateObject("ADODB.Connection")
-            conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456;"
+            conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456;"
             Dim sql
             sql = "INSERT INTO binh_luan (id_truyen, id_nguoi_dung, ndung_binh_luan) VALUES ('" & id_truyen & "','" & id_nguoi_dung & "', N'" & ndung_binh_luan & "')"
             conn.Execute sql

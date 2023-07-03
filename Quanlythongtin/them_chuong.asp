@@ -127,7 +127,7 @@
                     Dim email
                     email = Session("email")
                     Set conn = Server.CreateObject("ADODB.Connection")
-                    conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456"
+                    conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456"
                     Dim sql
                     sql = "SELECT * FROM nguoi_dung WHERE email = '" & email & "'"
                     Dim rs, vai_tro,id_nguoi_dung

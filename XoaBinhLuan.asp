@@ -6,7 +6,7 @@
     id_chuong = Request.QueryString("id_chuong")
 
     Set conn = Server.CreateObject("ADODB.Connection")
-    conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456;"
+    conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456;"
 
     If id_binh_luan <> "" Then
         sql = "DELETE FROM binh_luan WHERE id_binh_luan = " & id_binh_luan
