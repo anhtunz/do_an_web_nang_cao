@@ -16,7 +16,7 @@
     /* Phần tổng */
     body{
         width: 100%;
-        height: 750px;
+        height: 800px;
         float: left;
     }
     .m40{
@@ -34,7 +34,7 @@
     /* Phần sidebar */
     .sidebar{
         width: 20%;
-        height: 700px;
+        height: 800px;
         float: left;
     }
     
@@ -58,7 +58,7 @@
     /* Phần content */
     .content {
         display: flex;
-        height: 700px;
+        height: 800px;
         width: 80%;
         margin-top: 8px;
         
@@ -113,6 +113,22 @@
                     <h2 class="card-title" style=" color: blue">Thêm Truyện Mới</h2>
                 </div>
                 <%
+                    Set conn = Server.CreateObject("ADODB.Connection")
+                    conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456"
+
+                    Dim rs1, sql1, dem
+                    sql1 = "SELECT TOP 1 id_truyen FROM truyen ORDER BY id_truyen DESC"
+                    Set rs1 = conn.Execute(sql1)
+                    If Not rs1.EOF Then
+                        dem = rs1("id_truyen")
+                    Else
+                        dem = ""
+                    End If
+
+                    rs1.Close
+                    Set rs1 = Nothing
+                    conn.Close
+                    Set conn = Nothing
                     If (isnull(Session("email")) OR TRIM(Session("email")) = "") Then
                     Response.redirect("/login.asp")
                     End If
@@ -131,7 +147,8 @@
                     If vai_tro = "1" Or vai_tro = "2" Then
                 %>
                 <div class="card-body">
-	<form action="upload.asp?id_nguoi_dung=<%= id_nguoi_dung %>" method="post" style="margin-bottom: 10px;" enctype="multipart/form-data" target="iframe_upload">
+                    <p>Vui lòng đặt tên ảnh thành truyen<%= dem +1 %>.png</p>
+	                <form action="upload.asp?id_nguoi_dung=<%= id_nguoi_dung %>" method="post" style="margin-bottom: 10px;" enctype="multipart/form-data" target="iframe_upload">
                         <!-- <input type="hidden" name="mensagem" value="Elemento de formul�rio enviado com sucesso!" /> -->
 
                         <!-- <p>Nome (para exemplo:)</p>

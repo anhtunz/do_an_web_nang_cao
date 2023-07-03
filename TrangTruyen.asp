@@ -16,9 +16,7 @@
         height: 2000px;
         width: 70%;
         margin: 0 auto;
-        box-sizing: border-box;
-
-        
+        box-sizing: border-box; 
     } 
     /* Phần content trái */ 
     .content .content-trai{
@@ -150,9 +148,10 @@
                         formattednam_xb = FormatDateTime(nam_xb, vbShortDate)
                 %>
                         <div class="cot1">
-                          <div class="anhtruyen">
+                          <% If anh_truyen <> "" Then %>
                             <img src="<%= anh_truyen %>" itemprop="image" class="cover" width="180px" alt="<%= ten_truyen %>">
-                          </div>                            
+                          <% Else %>
+                            <img src="/Quanlythongtin/upload/truyen<%=id_truyen%>.png" itemprop="image" class="cover" width="180px" alt="<%= ten_truyen %>">                          <% End If %>                            
                           <div class="infos">
                             <br>
                             <p class="tacgia" style="color: #016eb2">Tác giả: <%= ho_ten %></p>

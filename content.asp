@@ -12,7 +12,7 @@
 <style>
   /* Phần content */
     .content{
-        height: 3200px;
+        height: 2940px;
         width: 70%;
         margin: 0 auto;
         box-sizing: border-box;

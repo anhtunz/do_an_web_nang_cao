@@ -2,24 +2,26 @@
     email = Session("email")
     Set conn = Server.CreateObject("ADODB.Connection")
     conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456"
+    
     sql = "SELECT * FROM nguoi_dung WHERE email = '" & email & "'"
+    
     Set rs = conn.Execute(sql)
- %>
+%>
 <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 100%;height: 100%;">
   <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
     <span class="material-symbols-outlined" style="padding-right: 10px;font-size: 50px;">
-      person_book
+      <img src="/Anh/logo1.png" alt="" width="32" height="32" class="rounded-circle me-2">
     </span>
     <h5>Web đọc truyện</h5>
   </a>
   <hr>
   <ul class="nav nav-pills flex-column mb-auto">
     <li class="nav-item">
-      <a href="info.asp?id_nguoi_dung=<%= rs("id_nguoi_dung") %>" class="nav-link link-dark">
-        <span class="material-symbols-outlined">
-          person
-        </span>
-        Thông tin cá nhân
+      <a href="/Quanlythongtin/info.asp?id_nguoi_dung=<%= rs("id_nguoi_dung") %>" class="nav-link link-dark">
+          <span class="material-symbols-outlined">
+            person
+          </span>
+          Thông tin cá nhân
       </a>
     </li>
     <li>
@@ -31,7 +33,7 @@
       </a>
     </li>
     <li>
-      <a href="them_truyen.asp?id_nguoi_dung=<%= rs("id_nguoi_dung") %>" class="nav-link link-dark">
+      <a href="/Quanlythongtin/them_truyen.asp?id_nguoi_dung=<%= rs("id_nguoi_dung") %>" class="nav-link link-dark">
         <span class="material-symbols-outlined">
           add
         </span>
@@ -42,20 +44,20 @@
       If rs("vai_tro") = 1 Then
     %>
     <li>
-        <a href="/Quanlythongtin/Quantrivien/qli_nguoi_dung.asp?id_nguoi_dung=<%= rs("id_nguoi_dung") %>" class="nav-link link-dark">
-          <span class="material-symbols-outlined">
-            account_circle
-          </span>
+      <a href="/Quanlythongtin/Quantrivien/qli_nguoi_dung.asp?id_nguoi_dung=<%= rs("id_nguoi_dung") %>" class="nav-link link-dark">
+        <span class="material-symbols-outlined">
+          account_circle
+        </span>
           Quản lí người dùng
-        </a>
-    </li>
+      </a>
+    </li>               
     <li>
-        <a href="admin_duyet_truyen.asp?id_nguoi_dung=<%= rs("id_nguoi_dung") %>" class="nav-link link-dark">
-          <span class="material-symbols-outlined">
-            check
-          </span>
-          Duyệt truyện
-        </a>
+      <a href="/Quanlythongtin/Quantrivien/admin_duyet_truyen.asp?id_nguoi_dung=<%= rs("id_nguoi_dung") %>" class="nav-link link-dark">
+        <span class="material-symbols-outlined">
+          check
+        </span>
+        Duyệt truyện
+      </a>
     </li>
     <%
       End If

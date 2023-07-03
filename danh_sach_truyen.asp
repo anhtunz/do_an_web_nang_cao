@@ -112,7 +112,7 @@
             Set Result = cmdPrep.execute
             do while not Result.EOF
         %>
-        <a href="testTrangTruyen.asp?id_truyen=<%=Result("id_truyen")%>" class="list-group-item list-group-item-action flex-column align-items-start">
+        <a href="TrangTruyen.asp?id_truyen=<%=Result("id_truyen")%>" class="list-group-item list-group-item-action flex-column align-items-start">
             <div class="d-flex justify-content-start">
                 <h5 class="mb-1"><%=Result("ten_truyen")%></h5>
                 <span class="badge badge-primary badge-pill" style="color: blue; border-radius: 40% ">Dịch</span>

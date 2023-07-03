@@ -10,14 +10,14 @@
 <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 100%;height: 100%;">
   <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
     <span class="material-symbols-outlined" style="padding-right: 10px;font-size: 50px;">
-      person_book
+      <img src="/Anh/logo1.png" alt="" width="32" height="32" class="rounded-circle me-2">
     </span>
     <h5>Web đọc truyện</h5>
   </a>
   <hr>
   <ul class="nav nav-pills flex-column mb-auto">
     <li class="nav-item">
-      <a href="info.asp?id_nguoi_dung=<%= rs("id_nguoi_dung") %>" class="nav-link link-dark">
+      <a href="/Quanlythongtin/info.asp?id_nguoi_dung=<%= rs("id_nguoi_dung") %>" class="nav-link link-dark">
           <span class="material-symbols-outlined">
             person
           </span>
@@ -25,7 +25,7 @@
       </a>
     </li>
     <li>
-      <a href="qli_truyen.asp?id_nguoi_dung=<%= rs("id_nguoi_dung") %>" class="nav-link link-dark">
+      <a href="/Quanlythongtin/qli_truyen.asp?id_nguoi_dung=<%= rs("id_nguoi_dung") %>" class="nav-link link-dark">
         <span class="material-symbols-outlined">
           list
         </span>
@@ -33,7 +33,7 @@
       </a>
     </li>
     <li>
-      <a href="them_truyen.asp?id_nguoi_dung=<%= rs("id_nguoi_dung") %>" class="nav-link link-dark">
+      <a href="/Quanlythongtin/them_truyen.asp?id_nguoi_dung=<%= rs("id_nguoi_dung") %>" class="nav-link link-dark">
         <span class="material-symbols-outlined">
           add
         </span>
@@ -52,7 +52,7 @@
       </a>
     </li>               
     <li>
-      <a href="admin_duyet_truyen.asp?id_nguoi_dung=<%= rs("id_nguoi_dung") %>" class="nav-link link-dark">
+      <a href="/Quanlythongtin/Quantrivien/admin_duyet_truyen.asp?id_nguoi_dung=<%= rs("id_nguoi_dung") %>" class="nav-link link-dark">
         <span class="material-symbols-outlined">
           check
         </span>
