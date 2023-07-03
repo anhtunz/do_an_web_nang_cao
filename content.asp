@@ -78,8 +78,8 @@
     }
     .content .content-phai1{
         width: 100%;
-        height: 200px;
-        
+        height: 320px;
+        margin-top: 45px;
     }
 
 
@@ -272,7 +272,7 @@
       <div class="content-phai">
         <div class="content-phai1">
           <div class="tieude content-trai1-child">
-            <h4>THỂ LOẠI TRUYỆN</h4>
+            <h5>THỂ LOẠI TRUYỆN</h5>
           </div>
           <%
             Set conn = Server.CreateObject("ADODB.Connection")
@@ -305,7 +305,7 @@
           %>
         </div>
         <div class="content-phai2">
-          <header>REVIEW TRUYỆN</header>
+          <h5>REVIEW TRUYỆN</h5>
             <div class="categories clearfix" name="ListReview">
               <ul class="list-group">
                   <% 

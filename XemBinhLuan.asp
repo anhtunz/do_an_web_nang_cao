@@ -15,6 +15,7 @@
    /* CSS cho phần bình luận */
   #comment-section {
     margin-top: 20px;
+    border: 1px solid #BBBBBB;
   }
   #comment-section h2 {
     font-size: 18px;
@@ -137,19 +138,22 @@
         %>
         <div>
             <div class="acts ml-auto d-flex justify-content-between" style="display: flex">
-                <small>
-                    <div class="userinfo">
-                        <strong style="font-size: 16px; color: blue"><%= rs("nghe_danh") %></strong>
-                        <i class="fa fa-circle"></i> <%= rs("ngay_binh_luan") %>
-                    </div>
-                    <% If isLoggedIn And rs("id_nguoi_dung") = id_nguoi_bl Then %>
-                    <div class="comment-actions">
-                        <p id="comment-text-<%= rs("id_binh_luan") %>" style="font-size: 16px; color: black" rows="2"><%= rs("ndung_binh_luan") %></p>
-                        <div id="edit-buttons-<%= rs("id_binh_luan") %>" style="display: none;">
-                            <input type="text" id="edit-comment-<%= rs("id_binh_luan") %>" style="width: 100%;" value="<%= rs("ndung_binh_luan") %>">
-                            <button onclick="cancelEditComment(<%= rs("id_binh_luan") %>)"><i class="bi bi-x-circle-fill"> </i>Hủy</button>
-                            <button onclick="saveComment(<%= rs("id_binh_luan") %>)"><i class="bi bi-file-earmark-check-fill"> </i>Lưu</button>
-                        </div>
+                
+                <small style="display:flex;">
+                  <img src="/Anh/meme camdao.jpg" alt="" width="32" height="32" class="rounded-circle me-2" style="margin-top: 7px;">                    <div>
+                      <div class="userinfo">
+                          <strong style="font-size: 16px; color: blue"><%= rs("nghe_danh") %></strong>
+                          <i class="fa fa-circle"></i> <%= rs("ngay_binh_luan") %>
+                      </div>
+                      <% If isLoggedIn And rs("id_nguoi_dung") = id_nguoi_bl Then %>
+                      <div class="comment-actions">
+                          <p id="comment-text-<%= rs("id_binh_luan") %>" style="font-size: 16px; color: black" rows="2"><%= rs("ndung_binh_luan") %></p>
+                          <div id="edit-buttons-<%= rs("id_binh_luan") %>" style="display: none;">
+                              <input type="text" id="edit-comment-<%= rs("id_binh_luan") %>" style="width: 100%;" value="<%= rs("ndung_binh_luan") %>">
+                              <button onclick="cancelEditComment(<%= rs("id_binh_luan") %>)"><i class="bi bi-x-circle-fill"> </i>Hủy</button>
+                              <button onclick="saveComment(<%= rs("id_binh_luan") %>)"><i class="bi bi-file-earmark-check-fill"> </i>Lưu</button>
+                          </div>
+                      </div>
                     </div>
 
                     <% Else %>

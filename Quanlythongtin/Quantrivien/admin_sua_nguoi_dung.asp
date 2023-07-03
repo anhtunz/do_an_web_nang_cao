@@ -179,7 +179,7 @@
                         </form>
                     </div>   
                     <%
-                        Response.Write "Không tìm thấy thông tin người dùng."
+                        
                         End If
                         rs.Close
                         Set rs = Nothing

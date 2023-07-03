@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web đọc truyện</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="/Anh/logo1.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 </head>
@@ -20,7 +20,6 @@
     } 
     /* Phần content trái */ 
     .content .content-trai{
-        border: 0.5px solid #a5a2a2d1;
         width: 70%;
         height: fit-content;
         float: left;
@@ -69,6 +68,7 @@
         width: 25%;
         height: 100%;
         float: left;
+        margin-top:8px;
     }
     .content .content-phai .tieude-content-trai1-child{
       background: #fff;
@@ -89,7 +89,7 @@
 
     /* End content phải */
 </style>
-<body>
+<body style="background-color: #EEEEEE;">
   <!-- Phần navbar -->
     <!-- #include file="navbar.asp" -->
   <!-- Phần content -->
@@ -144,6 +144,15 @@
                         ho_ten = rs("ho_ten")
                         the_loai= rs("ten_the_loai")
                         tinh_trang= rs("tinh_trang")
+                        Dim tinhtrang1
+                        If tinh_trang = "Full" Then
+                            tinhtrang1 = "Đã hoàn thiện"
+                        ElseIf tinh_trang = "NotFull" Then
+                            tinhtrang1= "Đang cập nhật"
+                        Else
+                            ' Trường hợp không khớp với bất kỳ giá trị nào khác
+                            Response.Write "Tình trạng không xác định"
+                        End If
                         nam_xb = rs("nam_xb")
                         formattednam_xb = FormatDateTime(nam_xb, vbShortDate)
                 %>
@@ -156,7 +165,7 @@
                             <br>
                             <p class="tacgia" style="color: #016eb2">Tác giả: <%= ho_ten %></p>
                             <p class="theloai" style="color: #016eb2">Thể loại: <%= the_loai %></p>
-                            <p class="tinhtrang">Trạng thái hiện tại: <%= tinh_trang %></p>
+                            <p class="tinhtrang">Trạng thái hiện tại: <%= tinhtrang1 %></p>
                             <p class="nxb">Ngày cập nhật: <%= formattednam_xb %></p>
                           </div>
                         </div>
@@ -190,7 +199,7 @@
           <!-- Phần card -->
           <div class="card-box">
             <header>
-              <h6><i class="fa-list-bullet"></i> 3 CHƯƠNG TRUYỆN MỚI NHẤT</h6>
+              <h5><i class="fa-list-bullet"></i> 3 CHƯƠNG TRUYỆN MỚI NHẤT</h5>
             </header>
             <%
               Set conn = Server.CreateObject("ADODB.Connection")
@@ -214,11 +223,11 @@
             
             <div class="card-box" id="chapters">
               <header>
-                <h6><i class="fa-list-bullet"></i> DANH SÁCH CÁC CHƯƠNG TRUYỆN</h6>
+                <h5><i class="fa-list-bullet"></i> DANH SÁCH CÁC CHƯƠNG TRUYỆN</h5>
               </header>
               <%
                 Dim pageSize
-                pageSize = 10
+                pageSize = 5
                 Set conn = Server.CreateObject("ADODB.Connection")
                 conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456;"
                 sqlCount = "SELECT COUNT(*) AS TotalChapters FROM chuong WHERE chuong.id_truyen = " & id_truyen
@@ -244,7 +253,7 @@
                 Loop
                 For i = 1 To totalPages
                 %>
-                    <a  href="#?id_truyen=<%= id_truyen %>&page=<%= i %>#chapters"><%= i %></a>
+                    <a  href="TrangTruyen.asp?id_truyen=<%= id_truyen %>&page=<%= i %>#chapters"><%= i %></a>
                 <%
                 Next
                 rs.Close
@@ -264,8 +273,11 @@
       </div>
       <div class="content-phai">
         <div class="tieude-content-trai1-child">
-          <header>THỂ LOẠI TRUYỆN</header>
-            <div class="categories clearfix">
+        <header style="
+            font-size: 19px;
+            font-weight: 649;
+            background-color: #EEEEEE;
+        ">THỂ LOẠI TRUYỆN</header>            
               <%
                 Set conn = Server.CreateObject("ADODB.Connection")
                 conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456;"
@@ -294,10 +306,14 @@
                 Set rs = Nothing
                 Set conn = Nothing
               %>
-            </div>
+            
         </div><br>
         <div class="tieude-content-trai1-child">
-          <header>REVIEW TRUYỆN</header>
+                  <header style="
+            font-size: 19px;
+            font-weight: 649;
+            background-color: #EEEEEE;
+        ">REVIEW TRUYỆN</header> 
             <div class="categories clearfix" name="ListReview">
               <ul class="list-group">
                   <% 

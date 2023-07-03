@@ -43,8 +43,9 @@
 
   <div class="card text-center" id="div_id_chuong">
     <div class="card-header">
-      Bạn đang đọc dở 
-      <button class="close-btn" onclick="deleteCookie('id_chuong')">X</button>
+      <h5>Truyện đang đọc dở</h5>
+      <button class="close-btn" onclick="deleteCookie('id_chuong')"><i class="bi bi-x-square-fill"></i>
+</button>
     </div>
     <div class="card-body">
       <h5 class="card-title"><%= rs("ten_truyen") %></h5>

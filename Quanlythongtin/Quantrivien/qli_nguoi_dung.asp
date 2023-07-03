@@ -160,7 +160,7 @@
                         <th scope="col" class="text-center">Email</th>
                         <th scope="col" class="text-center">Mật khẩu</th>
                         <th scope="col" class="text-center">Vai trò</th>
-                        <th scope="col" class="text-center">Quản lí bình luận</th>
+                        <th scope="col" class="text-center">Giới thiệu</th>
                         <th scope="col" class="text-center">Thao tác</th>
                         </tr>
                     </thead>
@@ -191,7 +191,7 @@
                                 end If
                             %>     
                             <td class="text-center">
-                                <a type="button" class="btn btn-primary" href = "#">Xem bình luận</a>
+                               <%=Result("gioi_thieu")%>
                             </td>
                             <td class="text-center">
                                 <a type="button" class="btn btn-primary" href = "admin_qli_nguoi_dung.asp?id_nguoi_dung=<%= Result("id_nguoi_dung") %>">Chi tiết</a>
