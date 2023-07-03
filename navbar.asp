@@ -36,9 +36,7 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="index.asp">Trang chủ</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Quanlythongtin/them_truyen.asp">Đăng truyện</a>
-                        </li>
+                        
                         <li class="nav-item">
                             <a class="nav-link" href="danh_sach_truyen.asp">Danh sách truyện</a>
                         </li>
@@ -68,6 +66,9 @@
                                 Set rs = Nothing
                                 Set conn = Nothing 
                             %>
+                        </li>
+                        <li class="nav-item" style="background-color:orange; border-radius: 5px;">
+                            <a class="nav-link" style="color:black;" href="/Quanlythongtin/them_truyen.asp">Đăng truyện</a>
                         </li>
                     </ul>
                     <form class="d-flex m20" method="get" action="/find.asp">
