@@ -11,7 +11,7 @@
     End If
     If isLoggedIn Then
         Set conn = Server.CreateObject("ADODB.Connection")
-        conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456"
+        conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456"
         sql = "SELECT * FROM nguoi_dung WHERE email = '" & email & "'"
         Set rs = conn.Execute(sql)
 %>

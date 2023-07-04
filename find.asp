@@ -102,7 +102,7 @@
                 searchInput = Request.QueryString("searchInput")
                 If searchInput <> "" Then ' 
                     Set conn = Server.CreateObject("ADODB.Connection")
-                    conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456"
+                    conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456"
                     sql = "SELECT truyen.id_truyen, truyen.ten_truyen, nguoi_dung.nghe_danh, truyen.so_chuong FROM truyen INNER JOIN nguoi_dung ON truyen.id_nguoi_dung = nguoi_dung.id_nguoi_dung WHERE ten_truyen LIKE N'%" & searchInput & "%' OR nghe_danh LIKE N'%" & searchInput & "%'"
                     Set rs = conn.Execute(sql)
                 End If
@@ -144,7 +144,7 @@
             </div>
             <%
                 Set conn = Server.CreateObject("ADODB.Connection")
-                conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456"
+                conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456"
                 sql = "SELECT *  FROM the_loai "
                 Set rs = conn.Execute(sql)
                 Dim dem

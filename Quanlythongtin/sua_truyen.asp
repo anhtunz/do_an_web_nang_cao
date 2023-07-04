@@ -119,7 +119,7 @@
                 page = Request.QueryString("page")
                 id_nguoi_dung = Request.QueryString("id_nguoi_dung")
                 Set conn = Server.CreateObject("ADODB.Connection")
-                conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456;"
+                conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456;"
                 sql = "SELECT * FROM truyen WHERE id_truyen= " & id_truyen
                 Set rs = conn.Execute(sql)
                 Dim tinh_trang

@@ -76,7 +76,7 @@
         id_chuong=Request.QueryString("id_chuong") 
         Dim conn 
         Set conn=Server.CreateObject("ADODB.Connection")
-        conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456;"
+        conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456;"
     %>
     <% 
         Dim id_truyen
@@ -108,7 +108,7 @@
                     strSQLTitle = "SELECT t.ten_truyen, c.ten_chuong, t.id_truyen FROM truyen AS t INNER JOIN chuong AS c ON t.id_truyen = c.id_truyen WHERE t.id_truyen = " & id_truyen & " AND c.id_chuong = " & id_chuong
                     
                     Set conn = Server.CreateObject("ADODB.Connection")
-                    conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456;"
+                    conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456;"
                     
                     Set rs = conn.Execute(strSQLTitle)
             
@@ -140,7 +140,7 @@
                         "INNER JOIN chuong AS c ON t.id_truyen = c.id_truyen " & _
                         "WHERE t.id_truyen = " & id_truyen & " AND c.id_chuong = " & id_chuong
                     Set conn = Server.CreateObject("ADODB.Connection")
-                    conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456;"
+                    conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456;"
                     Set rs = conn.Execute(strSQLeee)
                     If Not rs.EOF Then
                         Dim chuong_thoi_gian
@@ -164,7 +164,7 @@
                 Dim strSQLPrev
                 strSQLPrev = "SELECT TOP 1 * FROM chuong WHERE id_truyen = " & id_truyen & " AND id_chuong< " & id_chuong & " ORDER BY id_chuong DESC" 
                 Set conn=Server.CreateObject("ADODB.Connection")
-                conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456;"
+                conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456;"
                 Set rs=conn.Execute(strSQLPrev) 
                 If Not rs.EOF Then 
             %>
@@ -178,7 +178,7 @@
                 If id_truyen <> "" Then
                     strSQLNext="SELECT TOP 1 * FROM chuong WHERE id_truyen = " & id_truyen & " AND id_chuong > " &id_chuong & " ORDER BY id_chuong ASC" 
                     Set conn=Server.CreateObject("ADODB.Connection")
-                    conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456;"
+                    conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456;"
                     Set rs=conn.Execute(strSQLNext) 
                     If Not rs.EOF Then 
             %>
@@ -211,7 +211,7 @@
                 If id_truyen <> "" Then
                     strSQLPrevi="SELECT TOP 1 * FROM chuong WHERE id_truyen = " & id_truyen & " AND id_chuong < " &id_chuong & " ORDER BY id_chuong DESC" 
                     Set conn=Server.CreateObject("ADODB.Connection")
-                    conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456;"
+                    conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456;"
                     Set rs=conn.Execute(strSQLPrevi) 
                     If Not rs.EOF Then 
             %>
@@ -225,7 +225,7 @@
                 If id_truyen <> "" Then
                     strSQLNextChapter="SELECT TOP 1 * FROM chuong WHERE id_truyen = " & id_truyen& " AND id_chuong > " & id_chuong & " ORDER BY id_chuong ASC" 
                     Set conn=Server.CreateObject("ADODB.Connection")
-                    conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456;"
+                    conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456;"
                     Set rs=conn.Execute(strSQLNextChapter) 
                     If Not rs.EOF Then
             %>

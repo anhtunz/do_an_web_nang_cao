@@ -117,7 +117,7 @@
               <div class="row mt-4">
               <%
                 Set conn = Server.CreateObject("ADODB.Connection")
-                conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456"
+                conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456"
                 sql = "SELECT * FROM truyen WHERE id_truyen BETWEEN 4 AND 7"
                 Set rs = conn.Execute(sql)
                 ' Duyệt qua từng bản ghi trong kết quả truy vấn
@@ -145,7 +145,7 @@
             <div class="row mt-4">
               <%         
                 Set conn = Server.CreateObject("ADODB.Connection")
-                conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456"
+                conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456"
                 sql = "SELECT * FROM truyen WHERE id_truyen BETWEEN 8 AND 11"
                 Set rs = conn.Execute(sql)
                 ' Duyệt qua từng bản ghi trong kết quả truy vấn
@@ -174,17 +174,17 @@
         </div>
         <div class="content-trai3">
           <div class="list-group">
-            <h4>TRUYỆN MỚI CẬP NHẬT</h4>
+            <h4>CHƯƠNG MỚI CẬP NHẬT</h4>
             <%
               Set conn = Server.CreateObject("ADODB.Connection")
-              conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456"
-              sql = "SELECT TOP 15 chuong.id_chuong, chuong.ten_chuong, chuong.chuong_thoi_gian, truyen.ten_truyen FROM chuong INNER JOIN truyen ON chuong.id_truyen = truyen.id_truyen WHERE truyen.duyet = 1 ORDER BY chuong.id_chuong DESC"
+              conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456"
+              sql = "SELECT TOP 15 chuong.id_chuong, chuong.ten_chuong, chuong.chuong_thoi_gian, truyen.ten_truyen,truyen.id_truyen FROM chuong INNER JOIN truyen ON chuong.id_truyen = truyen.id_truyen WHERE truyen.duyet = 1 ORDER BY chuong.id_chuong DESC"
               Set rs = conn.Execute(sql)
               ' Duyệt qua từng bản ghi trong kết quả truy vấn
               Do While Not rs.EOF
               id_chuong = rs("id_chuong")
             %>
-              <a href="#?id_chuong=<%=rs("id_chuong")%>" class="list-group-item list-group-item-action flex-column align-items-start">
+              <a href="ChuongTruyen.asp?id_truyen=<%= rs("id_truyen") %>&id_chuong=<%=rs("id_chuong")%>" class="list-group-item list-group-item-action flex-column align-items-start">
                 <div class="d-flex justify-content-start">
                   <h5 class="mb-1"><%=rs("ten_truyen")%></h5>
                   <span class="badge badge-primary badge-pill" style="color: blue; border-radius: 40% ">Dịch</span>
@@ -210,7 +210,7 @@
               <div class="row mt-4">
                 <%
                   Set conn = Server.CreateObject("ADODB.Connection")
-                  conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456"
+                  conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456"
                   sql = "SELECT TOP 4 * FROM truyen WHERE tinh_trang = 'Full' ORDER BY id_truyen"
                   Set rs = conn.Execute(sql)
                   ' Duyệt qua từng bản ghi trong kết quả truy vấn
@@ -238,7 +238,7 @@
               <div class="row mt-4">
                 <%
                   Set conn = Server.CreateObject("ADODB.Connection")
-                  conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456"
+                  conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456"
                   sql = "SELECT TOP 4 * FROM truyen WHERE tinh_trang = 'Full' AND id_truyen > 18"
                   Set rs = conn.Execute(sql)
                   ' Duyệt qua từng bản ghi trong kết quả truy vấn
@@ -276,7 +276,7 @@
           </div>
           <%
             Set conn = Server.CreateObject("ADODB.Connection")
-            conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456"
+            conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456"
             sql = "SELECT *  FROM the_loai "
             Set rs = conn.Execute(sql)
             ' Duyệt qua từng bản ghi trong kết quả truy vấn
@@ -310,7 +310,7 @@
               <ul class="list-group">
                   <% 
                   Dim connStr
-                  connStr = "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456;"
+                  connStr = "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456;"
 
                   Set conn = Server.CreateObject("ADODB.Connection")
                   conn.Open connStr

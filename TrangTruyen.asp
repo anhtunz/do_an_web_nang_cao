@@ -103,7 +103,7 @@
           id_truyen = Request.QueryString("id_truyen")
           Dim conn
           Set conn = Server.CreateObject("ADODB.Connection")
-          conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456;"
+          conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456;"
           Dim sql
           sql = "SELECT * FROM truyen WHERE id_truyen = '" & id_truyen & "'"
           Dim rs
@@ -130,7 +130,7 @@
 
                 If id_truyen <> "" Then
                     Set conn = Server.CreateObject("ADODB.Connection")
-                    conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456;"
+                    conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456;"
                     sql = "SELECT truyen.*, nguoi_dung.ho_ten, the_loai.ten_the_loai, chuong.id_chuong " & _
                           "FROM truyen " & _
                           "INNER JOIN nguoi_dung ON truyen.id_nguoi_dung = nguoi_dung.id_nguoi_dung " & _
@@ -206,7 +206,7 @@
             </header>
             <%
               Set conn = Server.CreateObject("ADODB.Connection")
-              conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456;"
+              conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456;"
               sql = "SELECT TOP 3 * FROM chuong WHERE chuong.id_truyen = " & id_truyen & " ORDER BY id_chuong DESC"
               Set rs = conn.Execute(sql)
               Do While Not rs.EOF
@@ -232,7 +232,7 @@
                 Dim pageSize
                 pageSize = 5
                 Set conn = Server.CreateObject("ADODB.Connection")
-                conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456;"
+                conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456;"
                 sqlCount = "SELECT COUNT(*) AS TotalChapters FROM chuong WHERE chuong.id_truyen = " & id_truyen
                 Set rsCount = conn.Execute(sqlCount)
                 totalChapters = rsCount("TotalChapters")
@@ -283,7 +283,7 @@
         ">THỂ LOẠI TRUYỆN</header>            
               <%
                 Set conn = Server.CreateObject("ADODB.Connection")
-                conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456;"
+                conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456;"
                 sql = "SELECT *  FROM the_loai "
                 Set rs = conn.Execute(sql)
                 Dim dem
@@ -321,7 +321,7 @@
               <ul class="list-group">
                   <% 
                   Dim connStr
-                  connStr = "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456;"
+                  connStr = "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456;"
 
                   Set conn = Server.CreateObject("ADODB.Connection")
                   conn.Open connStr

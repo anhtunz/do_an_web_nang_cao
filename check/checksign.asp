@@ -17,7 +17,7 @@
     Dim vaitro
     vaitro = Request.Form("role")
     set conn = Server.CreateObject("ADODB.Connection")
-    conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456;"
+    conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456;"
     sql = "INSERT INTO nguoi_dung (ho_ten, email, mat_khau, nghe_danh, vai_tro) VALUES (N'" & name & "', '" & email & "', '" & password & "', N'" & nickname & "', " & vaitro & ")"
     conn.Execute sql
     conn.Close

@@ -114,7 +114,7 @@
                 </div>
                 <%
                     Set conn = Server.CreateObject("ADODB.Connection")
-                    conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456"
+                    conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456"
 
                     Dim rs1, sql1, dem
                     sql1 = "SELECT TOP 1 id_truyen FROM truyen ORDER BY id_truyen DESC"
@@ -135,7 +135,7 @@
                     Dim email
                     email = Session("email")
                     Set conn = Server.CreateObject("ADODB.Connection")
-                    conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456"
+                    conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456"
                     Dim sql
                     sql = "SELECT * FROM nguoi_dung WHERE email = '" & email & "'"
                     Dim rs, vai_tro,id_nguoi_dung

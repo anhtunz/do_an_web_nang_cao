@@ -19,7 +19,7 @@
     MoTa = Replace(Request.Form("gioithieu"), "'", "''")
     Dim strSQL
     Set conn = Server.CreateObject("ADODB.Connection")
-    conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456"
+    conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456"
     strSQL = "INSERT INTO truyen (ten_truyen,id_the_loai, so_chuong, nam_xb, anh_truyen, tinh_trang, mo_ta_ndung, id_nguoi_dung,duyet) VALUES (N'" & TenTruyen & "','" & TheLoai & "', '" & SoChuong & "', '" & NamXuatBan & "', '" & AnhTruyen & "', '" & TinhTrang & "', N'" & MoTa & "','" & ID_Nguoi_dung & "',0 )"
     conn.Execute strSQL
     

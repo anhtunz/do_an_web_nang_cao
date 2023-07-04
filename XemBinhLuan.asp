@@ -58,7 +58,7 @@
     isLoggedIn = True
     
     Set conn = Server.CreateObject("ADODB.Connection")
-    conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456;"
+    conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456;"
 
     sql = "SELECT * FROM nguoi_dung WHERE email = '" & email & "'"
 
@@ -129,7 +129,7 @@
   <div id="comment-list">
     <%
     Set conn = Server.CreateObject("ADODB.Connection")
-    conn.Open "Provider=SQLOLEDB.1;Data Source=VIET\MSSQLSERVER01;Database=Web_doc_truyen;User Id=sa;Password=123456;"
+    conn.Open "Provider=SQLOLEDB.1;Data Source=TUNZTUNZ\SQLEXPRESS;Database=Web_doc_truyen;User Id=sa;Password=123456;"
     Set rs = conn.Execute("SELECT binh_luan.*, nguoi_dung.* " & _
                           "FROM binh_luan INNER JOIN nguoi_dung ON binh_luan.id_nguoi_dung = nguoi_dung.id_nguoi_dung " & _
                           "WHERE binh_luan.id_truyen = " & id_truyen & _
