@@ -174,7 +174,7 @@
                                 <textarea class="text" id="gioithieu" name="gioithieu" rows="5" placeholder="Giới thiệu bản thân bạn" style="width: 200px;"><%=gioithieu%></textarea></div>  
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary" value="Sửa thông tin">Lưu thông tin</button>
-                                <a type="button" class="btn btn-default float-right" href="admin_qli_nguoi_dung.asp?id_nguoi_dung=<%= id_nguoi_dung %>">Hủy bỏ</a>
+                                <a type="button" class="btn btn-default float-right" href="admin_qli_nguoi_dung.asp?id_nguoi_dung=<%= id_nguoi_sua %>">Hủy bỏ</a>
                             </div>
                         </form>
                     </div>   

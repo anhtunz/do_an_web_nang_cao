@@ -7,7 +7,7 @@
       <footer class="bg-dark text-center text-white">
       <div class="container p-4">
         <section class="mb-4">
-            <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/anhtunz/do-an-web-nang-cao" role="button" style="border-radius: 70%;">
+            <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/anhtunz/do_an_web_nang_cao" role="button" style="border-radius: 70%;">
                 <i class="bi bi-github github-icon"></i>
             </a>
         </section>

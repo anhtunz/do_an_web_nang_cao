@@ -87,7 +87,7 @@
                 Set rs = conn.Execute(sql)
                 %>
                     <span class="navbar-text"> Xin chào                
-                        <a href="/Quanlythongtin/info.asp?id_nguoi_dung=<%= rs("id_nguoi_dung") %>" style="color: black; text-decoration: none;"><b><%= rs("nghe_danh") %></b></a>
+                        <a href="/Quanlythongtin/info.asp?id_nguoi_dung=<%= rs("id_nguoi_dung") %>" style="color: blue;"><b><%= rs("nghe_danh") %></b></a>
                     </span>
                 
                 <a type="button"  href="logout.asp" class="btn btn-danger ms-3">Đăng xuất</a>
