@@ -4,3 +4,4 @@ Những thứ cần bổ sung để hoàn thiện đồ án.
  + Phần thêm mới truyện, cách khắc phục việc phải đổi tên ảnh cùng tên với cái id_truyen khi tạo là thêm 1 trường ten_anh nữa để lưu lại tên ảnh khi người dùng up ảnh lên sever
  + Phần review truyện không nên làm tay nên làm thêm 1 tính năng rating để từ đó hiển thị ra những truyện hay nhất của thể loại đó, từ đấy làm cái review truyện.
  + Cái này nếu muốn phát triển: Để thúc đẩy người dùng đăng ký tài khoản thì mình nên thêm các chương trình khuyến mãi, minigame để nhận thưởng, ví dụ như người dùng cần đăng kí để đọc truyện VIP này......
+ + Phần darkmode nên làm toàn bộ trang web, không nên làm mỗi chương
